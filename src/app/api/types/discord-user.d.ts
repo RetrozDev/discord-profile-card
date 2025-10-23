@@ -1,13 +1,13 @@
-export type Clan = {
+export type PrimaryGuild = {
     /**
      * The tag label
      */
-    tag: string | null
+    tag?: string
 
     /**
-     * the clan badge image url
+     * the PrimaryGuild badge image url
      */
-    badge: string | null
+    badge?: string 
 }
 
 
@@ -15,7 +15,7 @@ export type DiscordUser = {
     /**
      * 	the user's display name, if it is set. For bots, this is the application name
      */
-    globalUsername: string;
+    globalUsername?: string;
 
     /**
      * the user's username, not unique across the platform	
@@ -25,25 +25,25 @@ export type DiscordUser = {
     /**
      * the user's avatar url if exists
      */
-    avatar: string | null; 
+    avatar?: string ; 
 
     /**
      * the user's banner url if exists
      */
-    banner: string | null; 
+    banner?: string ; 
 
     /**
      * the user's banner color
      */
-    bannerColor: string | null;
+    bannerColor?: string ;
 
     /**
-     * The user's clan badge 
+     * The user's primary guild badge 
      */
-    clan: Clan | null
+    primaryGuild?: PrimaryGuild 
 
     /**
      * the user's avatar decoration url
      */
-    avatarDecoration: string | null
+    avatarDecoration?: string 
 };
