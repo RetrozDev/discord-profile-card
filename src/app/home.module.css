@@ -68,6 +68,13 @@
 
     }
 
+    .userCardContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
     @media (max-width: 480px) {
         .box {
             padding: 1.5rem;

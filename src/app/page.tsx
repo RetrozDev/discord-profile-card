@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 import React, { useState } from "react";
 import type { DiscordUser } from "./api/types/discord-user";
@@ -59,7 +58,9 @@ export default function HomePage() {
                 {error && <p className={styles.error}>{error}</p>}
 
                 {userData && (
-                  <UserCard userData={userData}/>
+                    <div className={styles.userCardContainer}>
+                        <UserCard userData={userData} />
+                    </div>
                 )}
             </div>
         </main>

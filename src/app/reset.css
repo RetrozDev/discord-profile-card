@@ -398,3 +398,10 @@ input:where([type='button'], [type='reset'], [type='submit']),
 [hidden]:where(:not([hidden='until-found'])) {
   display: none !important;
 }
+
+@font-face {
+    font-family: 'GGSans';
+    src: url('../../public/ggsans.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
