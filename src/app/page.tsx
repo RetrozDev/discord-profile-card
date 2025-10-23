@@ -1,8 +1,8 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import React, { useState } from "react";
 import type { DiscordUser } from "./api/types/discord-user";
 import styles from "./home.module.css";
-import UserCard from "./components/UserCard";
 
 export default function HomePage() {
     const [discordId, setDiscordId] = useState<string>("");
@@ -59,7 +59,7 @@ export default function HomePage() {
 
                 {userData && (
                     <div className={styles.userCardContainer}>
-                        <UserCard userData={userData} />
+                        <img src={`${process.env.NEXT_PUBLIC_BASE_URL}/api/${discordId.trim()}/card`} alt={`${userData.username} card`}/>
                     </div>
                 )}
             </div>

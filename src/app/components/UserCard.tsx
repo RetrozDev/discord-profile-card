@@ -86,7 +86,6 @@ export const UserCard: React.FC<DiscordCardProps> = ({
 
     const globalUsernameStyle: React.CSSProperties = {
         color: "rgba(220, 220, 220, 1)",
-        fontFamily: "font-family: 'GGSans', sans-serif;",
         fontSize: "20px",
         height: "auto",
         fontWeight: 800,
@@ -119,7 +118,6 @@ export const UserCard: React.FC<DiscordCardProps> = ({
         fontSize: "12px",
         margin: "0px 2px 0px 0px",
     };
-
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -157,21 +155,25 @@ export const UserCard: React.FC<DiscordCardProps> = ({
                     </header>
                     <div style={userInfosStyle}>
                         <div style={userInfosNameStyle}>
-                            <h2 style={globalUsernameStyle}>
-                                {userData.globalUsername}
-                            </h2>
+                            {userData.globalUsername && (
+                                <h2 style={globalUsernameStyle}>
+                                    {userData.globalUsername}
+                                </h2>
+                            )}
                             <p style={usernameStyle}>{userData.username}</p>
                         </div>
-                        <div style={userInfosTagStyle}>
-                            <img
-                                src={userData.primaryGuild?.badge}
-                                alt="user data guild badge"
-                                style={badgeImgStyle}
-                            />
-                            <p style={tagPStyle}>
-                                {userData.primaryGuild?.tag}
-                            </p>
-                        </div>
+                        {userData.primaryGuild?.tag && (
+                            <div style={userInfosTagStyle}>
+                                <img
+                                    src={userData.primaryGuild?.badge}
+                                    alt="user data guild badge"
+                                    style={badgeImgStyle}
+                                />
+                                <p style={tagPStyle}>
+                                    {userData.primaryGuild?.tag}
+                                </p>
+                            </div>
+                        )}
                     </div>
                 </ForeignDiv>
             </foreignObject>
