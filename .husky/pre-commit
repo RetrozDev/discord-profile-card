@@ -1,0 +1,24 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Detect package manager
+if [ -f pnpm-lock.yaml ]; then
+  PM="pnpm"
+elif [ -f yarn.lock ]; then
+  PM="yarn"
+else
+  PM="npm"
+fi
+
+# Run lint and build
+if ! $PM run lint; then
+  echo "❌ Commit aborted: lint failed"
+  exit 1
+fi
+
+if ! $PM run build; then
+  echo "❌ Commit aborted: build failed"
+  exit 1
+fi
+
+echo "✅ Pre-commit checks passed"
