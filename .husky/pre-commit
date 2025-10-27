@@ -1,0 +1,16 @@
+npm run check || {
+  echo ""
+  echo "───────────────────────────────────────────────"
+  echo "🚫  Commit blocked!"
+  echo "Your code did not pass lint or build checks."
+  echo ""
+  echo "💡  Fix the issues shown above, then try again:"
+  echo "     npm run lint"
+  echo "     npm run build"
+  echo "───────────────────────────────────────────────"
+  echo ""
+  exit 1
+}
+
+echo ""
+echo "✅  All checks passed. Proceeding with commit..."
