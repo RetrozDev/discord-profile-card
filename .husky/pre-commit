@@ -1,24 +1,23 @@
-#!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+CYAN='\033[0;36m'
+NC='\033[0m' 
 
-# Detect package manager
-if [ -f pnpm-lock.yaml ]; then
-  PM="pnpm"
-elif [ -f yarn.lock ]; then
-  PM="yarn"
-else
-  PM="npm"
-fi
-
-# Run lint and build
-if ! $PM run lint; then
-  echo "❌ Commit aborted: lint failed"
+npm run check || {
+  echo ""
+  echo "${RED}───────────────────────────────────────────────${NC}"
+  echo "${RED}✖ Commit blocked!${NC}"
+  echo "${YELLOW}Your code failed lint or build checks.${NC}"
+  echo ""
+  echo "${CYAN}Fix the issues, then retry:${NC}"
+  echo "  ${YELLOW}npm run lint${NC}"
+  echo "  ${YELLOW}npm run build${NC}"
+  echo "${RED}───────────────────────────────────────────────${NC}"
+  echo ""
   exit 1
-fi
+}
 
-if ! $PM run build; then
-  echo "❌ Commit aborted: build failed"
-  exit 1
-fi
-
-echo "✅ Pre-commit checks passed"
+echo ""
+echo "${GREEN}✔ All checks passed — committing changes...${NC}"
+echo ""
